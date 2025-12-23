@@ -90,11 +90,11 @@ const DealsFeed: React.FC = () => {
   return (
     <div className="min-h-screen pb-12">
       {/* Header & Controls */}
-      <div className="bg-white border-b border-gray-100 py-8 px-4 mb-8 sticky top-16 z-30 shadow-sm">
+      <div className="bg-black/40 backdrop-blur-xl border-b border-white/10 py-8 px-4 mb-8 sticky top-16 z-30 shadow-2xl shadow-purple-500/10">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-extrabold text-dark mb-2">{pageTitle}</h1>
-            <p className="text-gray-500 text-sm">Wir haben {filteredDeals.length} Deals für dich gefunden.</p>
+            <h1 className="text-3xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-2">{pageTitle}</h1>
+            <p className="text-gray-400 text-sm">Wir haben {filteredDeals.length} Deals für dich gefunden.</p>
           </div>
 
           <div className="flex items-center gap-2 md:gap-4 w-full md:w-auto">
@@ -106,8 +106,8 @@ const DealsFeed: React.FC = () => {
                   onClick={() => setIsFilterOpen(true)}
                   className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-bold transition-all whitespace-nowrap ${
                     activeFiltersCount > 0 
-                      ? 'bg-dark text-white shadow-lg shadow-dark/20' 
-                      : 'bg-white border border-gray-200 text-dark hover:border-dark'
+                      ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/50' 
+                      : 'backdrop-blur-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-white/30'
                   }`}
                 >
                   <SlidersHorizontal size={18} /> 
@@ -120,8 +120,8 @@ const DealsFeed: React.FC = () => {
                     onClick={() => setIsSortOpen(!isSortOpen)}
                     className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-bold transition-all whitespace-nowrap ${
                       sortOption !== 'newest' 
-                        ? 'bg-dark text-white shadow-lg shadow-dark/20' 
-                        : 'bg-white border border-gray-200 text-dark hover:border-dark'
+                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/50' 
+                        : 'backdrop-blur-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-white/30'
                     }`}
                   >
                     <ArrowUpDown size={18} /> 
@@ -133,7 +133,7 @@ const DealsFeed: React.FC = () => {
                   {isSortOpen && (
                     <>
                       <div className="fixed inset-0 z-10" onClick={() => setIsSortOpen(false)}></div>
-                      <div className="absolute top-full right-0 md:left-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden z-20 animate-in fade-in slide-in-from-top-2 duration-200 origin-top-left">
+                      <div className="absolute top-full right-0 md:left-0 mt-2 w-48 backdrop-blur-xl bg-black/90 rounded-xl shadow-2xl shadow-purple-500/20 border border-white/10 overflow-hidden z-20 animate-in fade-in slide-in-from-top-2 duration-200 origin-top-left">
                         <div className="py-1">
                             {(['newest', 'popular', 'active'] as const).map((option) => (
                               <button
@@ -142,12 +142,12 @@ const DealsFeed: React.FC = () => {
                                   setSortOption(option);
                                   setIsSortOpen(false);
                                 }}
-                                className="w-full text-left px-4 py-3 text-sm font-medium hover:bg-gray-50 flex items-center justify-between group transition-colors"
+                                className="w-full text-left px-4 py-3 text-sm font-medium hover:bg-white/10 flex items-center justify-between group transition-colors"
                               >
-                                <span className={sortOption === option ? 'text-primary font-bold' : 'text-gray-600 group-hover:text-dark'}>
+                                <span className={sortOption === option ? 'text-purple-400 font-bold' : 'text-gray-300 group-hover:text-white'}>
                                   {sortLabels[option]}
                                 </span>
-                                {sortOption === option && <Check size={16} className="text-primary" />}
+                                {sortOption === option && <Check size={16} className="text-purple-400" />}
                               </button>
                             ))}
                         </div>
@@ -158,7 +158,7 @@ const DealsFeed: React.FC = () => {
              </div>
 
              {/* Divider */}
-             <div className="h-8 w-px bg-gray-200 hidden md:block shrink-0"></div>
+             <div className="h-8 w-px bg-white/10 hidden md:block shrink-0"></div>
 
              {/* Scrollable Categories - Separated to allow scrolling without clipping previous elements */}
              <div className="flex items-center gap-2 overflow-x-auto hide-scrollbar pb-1 md:pb-0 flex-1 md:flex-initial min-w-0">
@@ -166,10 +166,10 @@ const DealsFeed: React.FC = () => {
                    <button
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
-                    className={`px-4 py-2.5 rounded-full text-sm font-medium transition-colors whitespace-nowrap shrink-0 ${
+                    className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all whitespace-nowrap shrink-0 ${
                       selectedCategory === cat 
-                        ? 'bg-primary/10 text-primary font-bold' 
-                        : 'text-gray-500 hover:bg-gray-50'
+                        ? 'bg-purple-500/20 text-purple-400 font-bold border border-purple-500/50 shadow-lg shadow-purple-500/20' 
+                        : 'text-gray-400 hover:bg-white/10 hover:text-white'
                     }`}
                    >
                      {cat}
@@ -190,13 +190,13 @@ const DealsFeed: React.FC = () => {
               ))}
             </div>
           ) : (
-            <div className="text-center py-20 bg-white rounded-3xl border border-dashed border-gray-200">
+            <div className="text-center py-20 backdrop-blur-lg bg-white/5 rounded-3xl border border-dashed border-white/20">
               <div className="text-6xl mb-4">🤷‍♂️</div>
-              <h3 className="text-xl font-bold text-dark">Nichts gefunden.</h3>
-              <p className="text-gray-500 mt-2">Versuch mal die Filter anzupassen oder einen anderen Suchbegriff.</p>
+              <h3 className="text-xl font-bold text-white">Nichts gefunden.</h3>
+              <p className="text-gray-400 mt-2">Versuch mal die Filter anzupassen oder einen anderen Suchbegriff.</p>
               <button 
                 onClick={() => {setMaxPrice(1000); setSelectedCategory(Category.ALL); setSortOption('newest');}}
-                className="mt-6 text-primary font-bold hover:underline"
+                className="mt-6 text-purple-400 font-bold hover:text-pink-400 hover:underline transition-colors"
               >
                 Alle Filter zurücksetzen
               </button>
@@ -207,18 +207,18 @@ const DealsFeed: React.FC = () => {
 
       {/* Filter Drawer (Sidebar Overlay) */}
       {isFilterOpen && (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex justify-end">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex justify-end">
           {/* Backdrop click to close */}
           <div className="absolute inset-0" onClick={() => setIsFilterOpen(false)}></div>
           
-          <div className="relative w-full max-w-sm bg-white h-full shadow-2xl animate-in slide-in-from-right duration-300 flex flex-col">
-            <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-white">
-              <h2 className="text-xl font-bold flex items-center gap-2">
+          <div className="relative w-full max-w-sm backdrop-blur-xl bg-black/90 h-full shadow-2xl shadow-purple-500/20 animate-in slide-in-from-right duration-300 flex flex-col border-l border-white/10">
+            <div className="p-6 border-b border-white/10 flex justify-between items-center">
+              <h2 className="text-xl font-bold flex items-center gap-2 text-white">
                 <SlidersHorizontal size={20} /> Filter
               </h2>
               <button 
                 onClick={() => setIsFilterOpen(false)} 
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500 hover:text-dark"
+                className="p-2 hover:bg-white/10 rounded-full transition-colors text-gray-400 hover:text-white"
               >
                 <X size={24} />
               </button>
@@ -227,7 +227,7 @@ const DealsFeed: React.FC = () => {
             <div className="flex-1 overflow-y-auto p-6 space-y-8">
               {/* Categories */}
               <div>
-                <h3 className="font-bold text-dark mb-4 text-sm uppercase tracking-wider text-gray-400">Kategorie</h3>
+                <h3 className="font-bold text-white mb-4 text-sm uppercase tracking-wider text-gray-400">Kategorie</h3>
                 <div className="grid grid-cols-2 gap-2">
                   {CATEGORIES.map(cat => (
                     <button
@@ -235,8 +235,8 @@ const DealsFeed: React.FC = () => {
                       onClick={() => setSelectedCategory(cat)}
                       className={`px-4 py-3 rounded-xl text-sm font-medium text-left transition-all ${
                         selectedCategory === cat 
-                        ? 'bg-primary text-white shadow-md shadow-primary/30 scale-[1.02]' 
-                        : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/50 scale-[1.02]' 
+                        : 'backdrop-blur-lg bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10'
                       }`}
                     >
                       {cat}
@@ -248,8 +248,8 @@ const DealsFeed: React.FC = () => {
               {/* Price Slider */}
               <div>
                  <div className="flex justify-between items-end mb-4">
-                   <h3 className="font-bold text-dark text-sm uppercase tracking-wider text-gray-400">Maximaler Preis</h3>
-                   <span className="font-black text-xl text-primary">{maxPrice}€</span>
+                   <h3 className="font-bold text-white text-sm uppercase tracking-wider text-gray-400">Maximaler Preis</h3>
+                   <span className="font-black text-xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">{maxPrice}€</span>
                  </div>
                  <input 
                   type="range" 
@@ -258,33 +258,33 @@ const DealsFeed: React.FC = () => {
                   step="10"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(Number(e.target.value))}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
+                  className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-purple-500"
                  />
-                 <div className="flex justify-between text-xs text-gray-400 mt-2">
+                 <div className="flex justify-between text-xs text-gray-500 mt-2">
                    <span>0€</span>
                    <span>1000€+</span>
                  </div>
               </div>
 
               {/* Info Box */}
-              <div className="bg-blue-50 p-5 rounded-2xl border border-blue-100">
-                <h4 className="font-bold text-sm mb-2 text-blue-900">Deal-Garantie 🛡️</h4>
-                <p className="text-xs text-blue-700 leading-relaxed">
+              <div className="backdrop-blur-lg bg-blue-500/10 p-5 rounded-2xl border border-blue-500/30">
+                <h4 className="font-bold text-sm mb-2 text-blue-300">Deal-Garantie 🛡️</h4>
+                <p className="text-xs text-blue-200 leading-relaxed">
                   Wir prüfen jeden Preis manuell. Keine Fake-Rabatte, keine China-Dropshipping Scams.
                 </p>
               </div>
             </div>
 
-            <div className="p-6 border-t border-gray-100 bg-gray-50/50 backdrop-blur-sm">
+            <div className="p-6 border-t border-white/10 bg-black/50 backdrop-blur-sm">
               <button 
                 onClick={() => setIsFilterOpen(false)}
-                className="w-full bg-dark text-white font-bold py-3.5 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-purple-500/50 hover:shadow-xl hover:shadow-purple-500/70 hover:scale-105 transition-all duration-300"
               >
                 {filteredDeals.length} Deals anzeigen
               </button>
               <button 
                  onClick={() => {setMaxPrice(1000); setSelectedCategory(Category.ALL);}}
-                 className="w-full text-center text-xs text-gray-400 mt-3 hover:text-primary transition-colors"
+                 className="w-full text-center text-xs text-gray-400 mt-3 hover:text-purple-400 transition-colors"
               >
                  Filter zurücksetzen
               </button>
