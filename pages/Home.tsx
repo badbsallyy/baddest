@@ -21,17 +21,17 @@ const Home: React.FC = () => {
     <div className="pb-12">
       {/* Hero Section */}
       <section className="pt-8 pb-12 px-4 text-center max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-6xl font-extrabold text-dark tracking-tight mb-4">
-          🔥 Die krassesten Deals <br className="hidden md:block"/> im Netz – <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">heute.</span>
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+          🔥 Die krassesten Deals <br className="hidden md:block"/> im Netz – <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">heute.</span>
         </h1>
-        <p className="text-lg text-gray-500 mb-8 max-w-lg mx-auto">
+        <p className="text-lg text-gray-400 mb-8 max-w-lg mx-auto">
           Fashion, Tech & Stuff, der wirklich reduziert ist. Kein Spam, nur echte Rabatte.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/deals" className="bg-primary text-white font-bold py-3.5 px-8 rounded-full shadow-lg shadow-primary/30 hover:shadow-xl hover:-translate-y-1 transition-all">
+          <Link to="/deals" className="bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 text-white font-bold py-3.5 px-8 rounded-full shadow-lg shadow-purple-500/50 hover:shadow-2xl hover:shadow-purple-500/70 hover:scale-105 transition-all duration-300">
             Zu den Deals
           </Link>
-          <Link to="/deals?filter=trending" className="bg-white text-dark border border-gray-200 font-bold py-3.5 px-8 rounded-full hover:bg-gray-50 hover:border-gray-300 transition-all">
+          <Link to="/deals?filter=trending" className="backdrop-blur-lg bg-white/10 text-white border border-white/20 font-bold py-3.5 px-8 rounded-full hover:bg-white/20 hover:border-white/30 hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300">
             Trending Sales
           </Link>
         </div>
@@ -44,12 +44,12 @@ const Home: React.FC = () => {
             <Link 
               key={cat.name} 
               to={`/category/${cat.name.replace(' ', '')}`}
-              className="flex items-center gap-2 whitespace-nowrap bg-white border border-gray-200 px-4 py-3 rounded-xl hover:border-primary transition-colors min-w-max"
+              className="flex items-center gap-2 whitespace-nowrap backdrop-blur-lg bg-white/5 border border-white/10 px-4 py-3 rounded-xl hover:border-purple-500/50 hover:bg-white/10 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 min-w-max"
             >
               <div className={`p-1 rounded-md ${cat.color}`}>
                 {cat.icon}
               </div>
-              <span className="font-semibold text-sm">{cat.name}</span>
+              <span className="font-semibold text-sm text-white">{cat.name}</span>
             </Link>
           ))}
         </div>
@@ -59,12 +59,12 @@ const Home: React.FC = () => {
       <section className="max-w-7xl mx-auto px-4 mb-16">
         <div className="flex justify-between items-end mb-6">
           <div>
-            <h2 className="text-2xl font-bold flex items-center gap-2">
+            <h2 className="text-2xl font-bold flex items-center gap-2 text-white">
               <Flame className="text-red-500" fill="currentColor" /> Trending Deals
             </h2>
-            <p className="text-gray-500 text-sm mt-1">Was gerade alle kaufen.</p>
+            <p className="text-gray-400 text-sm mt-1">Was gerade alle kaufen.</p>
           </div>
-          <Link to="/deals" className="text-primary font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">
+          <Link to="/deals" className="text-purple-400 font-semibold text-sm flex items-center gap-1 hover:gap-2 hover:text-pink-400 transition-all">
             Alle sehen <ArrowRight size={16} />
           </Link>
         </div>
@@ -75,7 +75,7 @@ const Home: React.FC = () => {
 
       {/* Under 20 Banner */}
       <section className="max-w-7xl mx-auto px-4 mb-16">
-        <div className="bg-gradient-to-r from-emerald-500 to-teal-500 rounded-3xl p-8 text-white flex flex-col md:flex-row items-center justify-between shadow-lg relative overflow-hidden">
+        <div className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 rounded-3xl p-8 text-white flex flex-col md:flex-row items-center justify-between shadow-2xl shadow-emerald-500/30 relative overflow-hidden backdrop-blur-lg border border-white/20">
           <div className="absolute top-0 right-0 opacity-10 transform translate-x-12 -translate-y-12">
             <DollarSign size={300} />
           </div>
@@ -84,7 +84,7 @@ const Home: React.FC = () => {
             <p className="text-emerald-50">Die besten Schnapper unter 20€. Gönn dir was Kleines.</p>
           </div>
           <div className="relative z-10">
-             <Link to="/deals?maxPrice=20" className="bg-white text-emerald-600 font-bold py-3 px-6 rounded-full shadow-md hover:bg-emerald-50 transition-colors inline-block">
+             <Link to="/deals?maxPrice=20" className="bg-white text-emerald-600 font-bold py-3 px-6 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block">
                Deals unter 20€
              </Link>
           </div>
@@ -94,8 +94,8 @@ const Home: React.FC = () => {
        {/* New Deals */}
        <section className="max-w-7xl mx-auto px-4 mb-16">
         <div className="flex justify-between items-end mb-6">
-          <h2 className="text-2xl font-bold">🆕 Neu hinzugefügt</h2>
-           <Link to="/deals" className="text-primary font-semibold text-sm hover:underline">
+          <h2 className="text-2xl font-bold text-white">🆕 Neu hinzugefügt</h2>
+           <Link to="/deals" className="text-purple-400 font-semibold text-sm hover:text-pink-400 hover:underline transition-colors">
             Alle anzeigen
           </Link>
         </div>
@@ -107,10 +107,10 @@ const Home: React.FC = () => {
 
       {/* CTA Newsletter */}
       <section className="max-w-3xl mx-auto px-4 mb-16 text-center">
-        <div className="bg-dark rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
-           <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 to-dark opacity-50"></div>
+        <div className="backdrop-blur-xl bg-gradient-to-br from-purple-900/50 via-pink-900/50 to-purple-900/50 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden border border-white/10 shadow-2xl shadow-purple-500/30">
+           <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-50"></div>
            <div className="relative z-10">
-             <h2 className="text-3xl font-bold mb-4">Keine Lust zu suchen?</h2>
+             <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-200 via-pink-200 to-cyan-200 bg-clip-text text-transparent">Keine Lust zu suchen?</h2>
              <p className="text-gray-300 mb-8 max-w-md mx-auto">
                Wir schicken dir nur die wirklich kranken Deals per Mail. Kein Spam, versprochen.
              </p>
@@ -118,9 +118,9 @@ const Home: React.FC = () => {
                <input 
                  type="email" 
                  placeholder="deine@mail.com" 
-                 className="flex-1 px-4 py-3 rounded-xl text-dark focus:outline-none focus:ring-2 focus:ring-primary"
+                 className="flex-1 px-4 py-3 rounded-xl backdrop-blur-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:bg-white/20 transition-all"
                />
-               <button className="bg-primary hover:bg-indigo-500 px-6 py-3 rounded-xl font-bold transition-colors">
+               <button className="bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 hover:from-purple-600 hover:via-pink-600 hover:to-cyan-600 px-6 py-3 rounded-xl font-bold shadow-lg shadow-purple-500/50 hover:shadow-xl hover:shadow-purple-500/70 hover:scale-105 transition-all duration-300">
                  Deal Alarm 🔔
                </button>
              </div>
@@ -130,18 +130,19 @@ const Home: React.FC = () => {
 
       {/* Blog Teaser */}
       <section className="max-w-7xl mx-auto px-4">
-        <h2 className="text-2xl font-bold mb-6">Blog</h2>
+        <h2 className="text-2xl font-bold mb-6 text-white">Blog</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {BLOG_POSTS.map(post => (
             <Link key={post.id} to="/blog" className="group">
-              <div className="relative aspect-video rounded-xl overflow-hidden mb-3">
+              <div className="relative aspect-video rounded-xl overflow-hidden mb-3 border border-white/10">
                 <img src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                <span className="absolute bottom-2 left-2 bg-black/60 backdrop-blur text-white text-xs px-2 py-1 rounded">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span className="absolute bottom-2 left-2 backdrop-blur-lg bg-black/60 text-white text-xs px-2 py-1 rounded border border-white/20">
                   {post.category}
                 </span>
               </div>
-              <h3 className="font-bold text-lg leading-tight group-hover:text-primary transition-colors">{post.title}</h3>
-              <p className="text-gray-500 text-sm mt-1 line-clamp-2">{post.excerpt}</p>
+              <h3 className="font-bold text-lg leading-tight text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:bg-clip-text transition-all duration-300">{post.title}</h3>
+              <p className="text-gray-400 text-sm mt-1 line-clamp-2">{post.excerpt}</p>
             </Link>
           ))}
         </div>

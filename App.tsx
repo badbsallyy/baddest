@@ -23,7 +23,7 @@ const ScrollToTop: React.FC = () => {
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="font-sans text-slate-900 bg-gray-50 min-h-screen flex flex-col">
+      <div className="font-sans text-white bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-950 min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-grow">
           <Routes>
